@@ -17,13 +17,6 @@ import (
 	"github.com/rizaleow/hostinger-cli/internal/config"
 )
 
-// stateAccessor avoids an import cycle with the cli package: we only need a
-// few fields off cli.State to read the on-disk config.
-type stateAccessor interface {
-	configFile() *config.File
-	configPath() string
-}
-
 // NewCmd returns the `auth` command group.
 func NewCmd() *cobra.Command {
 	cmd := &cobra.Command{

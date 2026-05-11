@@ -109,14 +109,16 @@ func writeYAML(w io.Writer, v any) error {
 	if err != nil {
 		return err
 	}
-	var any interface{}
-	if err := json.Unmarshal(b, &any); err != nil {
+	var data any
+	if err := json.Unmarshal(b, &data); err != nil {
 		return err
 	}
 	enc := yaml.NewEncoder(w)
 	enc.SetIndent(2)
-	defer enc.Close()
-	return enc.Encode(any)
+	if err := enc.Encode(data); err != nil {
+		return err
+	}
+	return enc.Close()
 }
 
 func writeTemplate(w io.Writer, v any, tmpl string) error {

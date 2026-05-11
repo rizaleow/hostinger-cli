@@ -55,11 +55,6 @@ func vmID(arg string) (api.VirtualMachineId, error) {
 	return api.VirtualMachineId(n), nil
 }
 
-func vmCmdNoBody(use, short string, do func(c *api.ClientWithResponses, ctx, vmID any) (any, error)) *cobra.Command {
-	// helper unused — kept simple inline implementations below.
-	return nil
-}
-
 // --- read-only ---
 
 func newVMListCmd() *cobra.Command {
