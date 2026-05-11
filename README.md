@@ -151,6 +151,21 @@ hostinger-cli describe | jq '[.. | objects | select(.path) | .path]'
 # Exit code is non-zero on any non-2xx response.
 ```
 
+## Use with Claude Code
+
+A companion [Claude Code](https://claude.com/claude-code) plugin ships
+model-invoked skills that teach Claude when and how to drive
+`hostinger-cli` (VPS lifecycle, DNS edits, domain ops, output piping).
+The plugin shells out to the binary, so install and authenticate
+`hostinger-cli` first, then:
+
+```
+/plugin marketplace add rizaleow/claude-plugins
+/plugin install hostinger-cli@rizaleow
+```
+
+Source: [rizaleow/claude-plugins](https://github.com/rizaleow/claude-plugins).
+
 ## Develop
 
 ```bash
