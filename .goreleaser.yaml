@@ -55,6 +55,7 @@ brews:
     repository:
       owner: rizaleow
       name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     homepage: https://github.com/rizaleow/hostinger-cli
     description: Go-native CLI for the Hostinger API
     license: MIT
