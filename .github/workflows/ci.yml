@@ -12,8 +12,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-go@v6
         with:
           go-version: stable
           cache: true
@@ -27,11 +27,15 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-go@v6
         with:
           go-version: stable
           cache: true
-      - uses: golangci/golangci-lint-action@v8
+      # Build golangci-lint from source against the runner's Go toolchain so
+      # it tracks our go.mod target instead of being capped at whichever Go
+      # the upstream binary release happened to be built with.
+      - uses: golangci/golangci-lint-action@v9
         with:
-          version: v2.5.0
+          install-mode: goinstall
+          version: v2.11.0
